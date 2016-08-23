@@ -37,7 +37,9 @@
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
-#include <tf/message_filter.h>
+//#include <tf/message_filter.h>
+#include <tf2_ros/message_filter.h>
+#include <tf2_ros/transform_listener.h>
 #include <message_filters/subscriber.h>
 
 #if CV_MAJOR_VERSION == 3
@@ -117,7 +119,7 @@ private:
   // retrieves depth image from head_camera
   // used to fit ground plane to
   boost::shared_ptr< message_filters::Subscriber<sensor_msgs::Image> > depth_image_sub_;
-  boost::shared_ptr< tf::MessageFilter<sensor_msgs::Image> > depth_image_filter_;
+  boost::shared_ptr< tf2_ros::MessageFilter<sensor_msgs::Image> > depth_image_filter_;
 
   // retrieves camera matrix for head_camera
   // used in calculating ground plane
